@@ -1,0 +1,78 @@
+% ========================================================================
+% ========================================================================
+% ========================================================================
+% ========================================================================
+% ====================     SRI LANKA POWER MODEL   =======================
+% ========================================================================
+% ========================================================================
+% ========================================================================
+% ========================================================================
+% ========================================================================
+t_dist = 200;
+rocof_meas_window = 0.18
+
+
+%% Global System Values
+f_base = 50;           % Nominal frequency in Hz
+S_base_sys = 1000e6;   % 1000 MVA System Base for CEB Grid
+D_T = 1.5;             % Total system damping
+
+%% FutureGrid-SL: Grid Expansion Parameters
+S_base_sys = 1000e6;   % 1000 MVA System Base
+
+
+%% LAKVIJAYA POWER PLANT START ===========================================
+
+%% Lakvijaya Coal Power Plant (Reheat Steam Unit) Parameters
+
+% 1. Power and Grid Integration
+LAK_S_nom = 300e6;   % Nominal Capacity: 300 MVA (One unit)
+LAK_H = 3.0;         % Inertia Constant: 3.0 seconds (Heavy coal rotor)
+LAK_R = 0.04;        % Droop Setting: 4% (Standard CEB grid compliance)
+
+% 2. Governor and Turbine Time Constants
+T_G = 0.2;           % Governor time constant (Valve actuator delay)
+RHT_F_HP = 0.3;      % High-Pressure (HP) turbine power fraction
+RHT_T_RH = 7.0;      % Reheater time constant (Massive steam delay)
+RHT_T_CH = 0.3;      % Steam chest time constant
+
+
+%% LAKVIJAYA END ========================================================
+
+%% Samanalawewa
+SAM_Unit_S_nom = 60e6;   % 60 MVA per unit
+SAM_H = 3.5;             % Hydro rotor inertia
+SAM_R_P = 0.05;          % 5% Permanent Droop
+
+% Hydro Turbine Dynamics (Applies to both units)
+SAM_T_R = 5.0;         
+SAM_R_T = 0.38;        
+SAM_T_W = 1.5;
+
+%% Samanalawewa End =====================================================
+
+
+
+
+
+
+
+
+% Plese leave the below section in below in order to omit the running
+% conflicts and when you add the plant just update the Plant_S_nom and
+% Plant_H array
+% Define your plants in a specific order.
+% Index Order: [Lakvijaya 1, Lakvijaya 2, Lakvijaya 3, Mahaweli, Kelanitissa]
+
+% 1. Plant Capacities (VA)
+Plant_S_nom = [LAK_S_nom, LAK_S_nom, LAK_S_nom , SAM_Unit_S_nom , SAM_Unit_S_nom]; 
+
+% 2. Plant Inertias (Seconds)
+Plant_H     = [ LAK_H,   LAK_H,   LAK_H, SAM_H, SAM_H]; 
+
+%% Automatic Equivalent Inertia Calculation
+% The '.*' operator multiplies matching pairs, and 'sum' adds them all together.
+H_eq = sum(Plant_H .* Plant_S_nom) / S_base_sys;
+
+%% Universal Governor Settings
+T_G = 0.2;             % Standard valve actuator delay (Applies to all plants)
