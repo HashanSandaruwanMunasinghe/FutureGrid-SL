@@ -49,7 +49,7 @@ Features non-minimum phase penstock delays (water starting times) and transient 
 6. Run the simulation (Recommended stop time: 30 seconds) and open the main Scope to view the time-domain frequency deviation ($\Delta\omega$).
 
 ## Project Team
-* **Agampodige Helan Sanjeewa** - Thermal Base, Mahaweli Cascade & Wind FFR Integration
+* **Hashan** - Thermal Base, Mahaweli Cascade & Wind FFR Integration
 * **Dinitha** - CCGT Expansion (Sobadhanavi/Yugadhanavi) & Laxapana Models
 * **Nayanajith** - National Hydro Expansion & Run-of-River Integration
 * **Anuththara** - Scope Simulations, Scenario Testing & Data Analysis
