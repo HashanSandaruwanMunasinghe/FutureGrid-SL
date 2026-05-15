@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 e6304ca66441ea75aa5062168d0dc6ba51d24d09 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777535637 +0530	commit (initial): Initial commit
+e6304ca66441ea75aa5062168d0dc6ba51d24d09 e6304ca66441ea75aa5062168d0dc6ba51d24d09 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777535676 +0530	Branch: renamed refs/heads/master to refs/heads/main
+e6304ca66441ea75aa5062168d0dc6ba51d24d09 c293a6a91b173ebe4ccf6d67e40c994da1d38294 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777536166 +0530	commit: Add gitignore to clean repo
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 f25526c9358f44e33b0006c1581e008e866ef867 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777545952 +0530	merge hashan-dev: Fast-forward
+f25526c9358f44e33b0006c1581e008e866ef867 ec2fa03c9f02eef85873ca1e7aa2987467685351 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777603922 +0530	commit: feat: Finalize FutureGrid-SL dynamic model and rename master files
+ec2fa03c9f02eef85873ca1e7aa2987467685351 5d3ef954ee51e45fc42fca438d84e2d47797d757 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777624475 +0530	commit: feat: Finalize FutureGrid-SL master model with complete generation mix
+5d3ef954ee51e45fc42fca438d84e2d47797d757 cc9c990ee8874932721ab7b96ed1e9398d72cca7 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1777625292 +0530	commit: Update: local changes before sync
+cc9c990ee8874932721ab7b96ed1e9398d72cca7 2ef48b4db0e90b90e3ab812d8a0b63c7dd2e1ab8 HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1778816233 +0530	commit: Rename power system simulation models to FutureGridSL
+2ef48b4db0e90b90e3ab812d8a0b63c7dd2e1ab8 9d25f6b9983f0e6ab6c2006c9075f63e837f302e HashanSandaruwanMunasinghe <munasinghefirst@gmail.com> 1778818792 +0530	commit: Updated project files

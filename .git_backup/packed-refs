@@ -1,0 +1,11 @@
+# pack-refs with: peeled fully-peeled sorted 
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 refs/heads/anuththara-dev
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 refs/heads/dinitha-dev
+f25526c9358f44e33b0006c1581e008e866ef867 refs/heads/hashan-dev
+9d25f6b9983f0e6ab6c2006c9075f63e837f302e refs/heads/main
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 refs/heads/nayanajith-dev
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 refs/remotes/origin/anuththara-dev
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 refs/remotes/origin/dinitha-dev
+f25526c9358f44e33b0006c1581e008e866ef867 refs/remotes/origin/hashan-dev
+ec2fa03c9f02eef85873ca1e7aa2987467685351 refs/remotes/origin/main
+c293a6a91b173ebe4ccf6d67e40c994da1d38294 refs/remotes/origin/nayanajith-dev
