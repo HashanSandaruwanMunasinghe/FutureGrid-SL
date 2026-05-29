@@ -629,6 +629,36 @@ Plant_S_nom = [LAK_S_nom, LAK_S_nom, LAK_S_nom , ...
         ]; 
 
 
+
+
+
+%% EV Curve Data
+
+
+time_hours = 0:23;
+time_sec = time_hours * 3600; % [0, 3600, 7200, ... 82800]
+
+EV_Load_pu = [0.08, 0.08, 0.07, 0.06, 0.04, 0.02, 0.01, 0.01, ...
+              0.02, 0.03, 0.04, 0.04, 0.04, 0.03, 0.02, 0.01, ...
+              0.01, 0.03, 0.07, 0.10, 0.09, 0.07, 0.08, 0.08];
+
+% Combine into a single matrix variable
+EV_Curve_Data = [time_sec', EV_Load_pu'];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ========================================================================
@@ -636,70 +666,90 @@ Plant_S_nom = [LAK_S_nom, LAK_S_nom, LAK_S_nom , ...
 %% ========================================================================
 
 Load_pu = 2388.8 / 1000; % Sets the pu load based on the 10:15 graph total
+
+
+% ========================================================================
+% Balanced Participation Factors (Total Sum = 1.0000)
+% ========================================================================
+
 % --- 1. Thermal Coal (Total = 0.2568) ---
-K_LAK   = 0.0668;   % Lakvijaya (UNCHANGED)
+K_LAK     = 0.2568;   % Lakvijaya (Fully allocated to match header)
+
 % --- 2. Thermal Oil / Gas / CCGT (Total = 0.1417) ---
-% All thermal load shifted to Sobadhanavi to reduce active machines
-K_SOBA1 = 0.0017/2; % Sobadhanavi GT
-K_SOBA2 = 0.1317/2; % Sobadhanavi ST
-K_YUGA1 = 0.1000;   % Yugadhanavi GT (Turned OFF)
-K_YUGA2 = 0.0000;   % Yugadhanavi ST (Turned OFF)
-K_KEL1  = 0.0000;   % Kelanitissa GTs (Turned OFF)
-K_KEL2  = 0.0000;   % Kelanitissa CCGT Gas (Turned OFF)
-K_KEL3  = 0.0000;   % Kelanitissa CCGT Steam (Turned OFF)
-K_SAP1  = 0.0813;   % Sapugaskanda Station A (Turned OFF)
-K_SAP2  = 0.0000;   % Sapugaskanda Station B (Turned OFF)
-K_UTH   = 0.0000;   % Uthuru Janani (Standby)
-K_BAR   = 0.1000;   % Colombo Port Barge (Standby)
+% All active thermal load shifted to Sobadhanavi to reduce active machines
+K_SOBA1   = 0.0100;   % Sobadhanavi GT
+K_SOBA2   = 0.1317;   % Sobadhanavi ST
+K_YUGA1   = 0.0000;   % Yugadhanavi GT (Turned OFF)
+K_YUGA2   = 0.0000;   % Yugadhanavi ST (Turned OFF)
+K_KEL1    = 0.0000;   % Kelanitissa GTs (Turned OFF)
+K_KEL2    = 0.0000;   % Kelanitissa CCGT Gas (Turned OFF)
+K_KEL3    = 0.0000;   % Kelanitissa CCGT Steam (Turned OFF)
+K_SAP1    = 0.0000;   % Sapugaskanda Station A (Turned OFF)
+K_SAP2    = 0.0000;   % Sapugaskanda Station B (Turned OFF)
+K_UTH     = 0.0000;   % Uthuru Janani (Standby)
+K_BAR     = 0.0000;   % Colombo Port Barge (Standby)
+
 % --- 3. Hydro Complexes (Total = 0.1680) ---
 % All hydro load shifted to Victoria and Kotmale to reduce active machines
-K_VIC   = 0.0850;   % Victoria
-K_KOT   = 0.0830;   % Kotmale
-K_SAM   = 0.0000;   % Samanalawewa (Turned OFF)
-K_NLX   = 0.0000;   % New Laxapana (Turned OFF)
-K_UMA   = 0.000;   % Uma Oya (Turned OFF)
-K_RAN   = 0.5000;   % Randenigala (Standby)
-K_RTB   = 0.0000;   % Rantambe (Standby)
-K_BWT   = 0.0000;   % Bowatenna (Standby)
-K_UKU   = 0.0000;   % Ukuwela (Standby)
-K_POL   = 0.0000;   % Polpitiya (Standby)
-K_CAN   = 0.0000;   % Canyon (Standby)
-K_WIM   = 0.0000;   % Wimalasurendra (Standby)
-K_BRO   = 0.0000;   % Broadlands (Standby)
-K_KUK   = 0.0000;   % Kukuleganga (Standby)
-K_UKT   = 0.0000;   % Upper Kotmale (Standby)
-K_OLX1  = 0.0000;   % Old Laxapana 1 (Standby)
-K_OLX2  = 0.0000;   % Old Laxapana 2 (Standby)
+K_VIC     = 0.0850;   % Victoria
+K_KOT     = 0.0830;   % Kotmale
+K_SAM     = 0.0000;   % Samanalawewa (Turned OFF)
+K_NLX     = 0.0000;   % New Laxapana (Turned OFF)
+K_UMA     = 0.0000;   % Uma Oya (Turned OFF)
+K_RAN     = 0.0000;   % Randenigala (Standby)
+K_RTB     = 0.0000;   % Rantambe (Standby)
+K_BWT     = 0.0000;   % Bowatenna (Standby)
+K_UKU     = 0.0000;   % Ukuwela (Standby)
+K_POL     = 0.0000;   % Polpitiya (Standby)
+K_CAN     = 0.0000;   % Canyon (Standby)
+K_WIM     = 0.0000;   % Wimalasurendra (Standby)
+K_BRO     = 0.0000;   % Broadlands (Standby)
+K_KUK     = 0.0000;   % Kukuleganga (Standby)
+K_UKT     = 0.0000;   % Upper Kotmale (Standby)
+K_OLX1    = 0.0000;   % Old Laxapana 1 (Standby)
+K_OLX2    = 0.0000;   % Old Laxapana 2 (Standby)
+
 % --- 4. Solar IBR (Total = 0.4320) ---
-% Forecasted Solar (UNCHANGED)
-K_AGG_SOL = 0.0; % Aggregated Solar Block
-% Existing Solar
-K_MAD   = 0.0307;   % Maduru Oya
-K_LAU   = 0.0100;   % Laugfs Hambantota
-K_SOC   = 0.0100;   % Solar One Ceylon
-K_HBT   = 0.0000;  
-K_SAG   = 0.0000;  
-K_SS1   = 0.0000;  
-K_SS2   = 0.0000;
+% Core active solar block receives the remainder to hit the target
+K_AGG_SOL = 0.3813;   % Aggregated Solar Block
+K_MAD     = 0.0307;   % Maduru Oya
+K_LAU     = 0.0100;   % Laugfs Hambantota
+K_SOC     = 0.0100;   % Solar One Ceylon
+K_HBT     = 0.0000;  
+K_SAG     = 0.0000;  
+K_SS1     = 0.0000;  
+K_SS2     = 0.0000;
+
 % --- 5. Wind IBR (Total = 0.0015) ---
-K_MAN   = 0.0015;   % Mannar Thambapavani
-K_AMB   = 0.0000;
-K_MADK  = 0.0000;
-K_UPP   = 0.0000;  
-K_MAM1  = 0.0000;
-K_MAM2  = 0.0000;
-K_MAM3  = 0.0000;
-K_NAL   = 0.0000;
-K_NIR   = 0.0000;
-K_PWD   = 0.0000;
-K_POLW  = 0.0000;
-K_SEG   = 0.0000;
-K_VALL  = 0.0000;   % Vallimunai Wind Farm
-K_VID   = 0.0000;   % Vidatamunai Wind Farm
-K_WILL  = 0.0000;   % Will Wind Farm
-K_WSC   = 0.0000;   % Windscape Wind Farm
+K_MAN     = 0.0015;   % Mannar Thambapavani
+K_AMB     = 0.0000;
+K_MADK    = 0.0000;
+K_UPP     = 0.0000;  
+K_MAM1    = 0.0000;
+K_MAM2    = 0.0000;
+K_MAM3    = 0.0000;
+K_NAL     = 0.0000;
+K_NIR     = 0.0000;
+K_PWD     = 0.0000;
+K_POLW    = 0.0000;
+K_SEG     = 0.0000;
+K_VALL    = 0.0000;   % Vallimunai Wind Farm
+K_VID     = 0.0000;   % Vidatamunai Wind Farm
+% Will Wind Farm
+K_WILL    = 0.0000;   
+K_WSC     = 0.0000;   % Windscape Wind Farm
 
+% --- Mathematical Verification Check ---
+Total_Sum = K_LAK + K_SOBA1 + K_SOBA2 + K_YUGA1 + K_YUGA2 + K_KEL1 + ...
+            K_KEL2 + K_KEL3 + K_SAP1 + K_SAP2 + K_UTH + K_BAR + K_VIC + ...
+            K_KOT + K_SAM + K_NLX + K_UMA + K_RAN + K_RTB + K_BWT + ...
+            K_UKU + K_POL + K_CAN + K_WIM + K_BRO + K_KUK + K_UKT + ...
+            K_OLX1 + K_OLX2 + K_AGG_SOL + K_MAD + K_LAU + K_SOC + ...
+            K_HBT + K_SAG + K_SS1 + K_SS2 + K_MAN + K_AMB + K_MADK + ...
+            K_UPP + K_MAM1 + K_MAM2 + K_MAM3 + K_NAL + K_NIR + K_PWD + ...
+            K_POLW + K_SEG + K_VALL + K_VID + K_WILL + K_WSC;
 
+disp(['Verified System Coefficient Sum: ', num2str(Total_Sum)]);
 
 
 %% =============================================================================
